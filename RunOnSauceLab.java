@@ -42,18 +42,18 @@ public class RunOnSauceLab {
 	@Test
 	public void SauceLab() {
 
-        System.out.println("In Test");
-        // Use this to navigate to a page by specifying the URL
+        	System.out.println("In Test");
+        	// Use this to navigate to a page by specifying the URL
 		driver.get("https://www.google.co.in/");
 			
 		// This will find the element by id.  
 		WebElement element = driver.findElement(By.name("q"));
 		
 		// Enter something to search for
-        element.sendKeys("Shubham Arora Github");
+		 element.sendKeys("Shubham Arora Github");
 
-        // Submit the form
-        element.submit();
+		 // Submit the form
+		 element.submit();
 
 	}
 	
@@ -62,7 +62,7 @@ public class RunOnSauceLab {
 	public void tearDown()  
 	{
 		System.out.println("In After");
-        // close the browser
-        driver.quit();
+		 // close the browser
+		 driver.quit();
 	}
 }
