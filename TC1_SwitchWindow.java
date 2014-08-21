@@ -44,6 +44,10 @@ public class TC1_SwitchWindow {
 			 }
 		}
 		
+		String newWindowUrl = driver.getCurrentUrl();
+		
+		assertEquals(newWindowUrl,"ENTER_URL_HERE");
+		
 		// switch back to the original window
 		driver.switchTo().window(already_openned_window);
 		 
