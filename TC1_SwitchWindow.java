@@ -18,15 +18,15 @@ public class TC1_SwitchWindow {
 	{
 		System.out.println("In Before");
 		// Maximize the browser window
-        driver.manage().window().maximize();    
+        	driver.manage().window().maximize();    
 	}
 		
 
 	@Test
 	public void SwitchWindow() {
 
-        System.out.println("In Test");
-        // Use this to navigate to a page by specifying the URL
+        	System.out.println("In Test");
+        	// Use this to navigate to a page by specifying the URL
 		driver.get("ENTER_URL_HERE");
 		
 		// Get the current window/tab handle 
@@ -58,7 +58,7 @@ public class TC1_SwitchWindow {
 	public void tearDown()  
 	{
 		System.out.println("In After");
-        // close the browser
-        driver.quit();
+        	// close the browser
+        	driver.quit();
 	}
 }
