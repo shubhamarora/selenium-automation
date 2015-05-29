@@ -41,9 +41,15 @@ public class CSVDrivenScript {
     public void setUp() throws Exception {
 	
 	launchBrowser();
+	
 	driver.manage().window().maximize();
 	driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-	file = new File("src/test/resources/output.csv"); // OutputCSV
+	
+	file = new File("path/to/your/output.csv"); // OutputCSV
+	
+	// If output csv does not exist, it will create one
+	// And in case if it already exist on the specified path.
+	// The results will be appended to the existing output sheet
 	if (!file.exists()) {
 	    file.createNewFile();
 	}
@@ -51,14 +57,22 @@ public class CSVDrivenScript {
 
     @Parameters
     public static Collection<String[]> testData() throws IOException {
-	return getTestData("src/test/resources/input.csv"); 
+	return getTestData("path/to/your/input.csv"); 
     }
 		
+    
     public CSVDrivenScript(String browser, String url) {
 	this.browser = browser;
 	this.url = url;
     }
-
+    
+    /**
+     * @param fileName input sheet file
+     * @return collection object
+     * @throws IOException
+     * 
+     *  Read data from the input CSV and store it in the collection and return the collection object
+     */
     public static Collection<String[]> getTestData(String fileName) throws IOException {
 	List<String[]> records = new ArrayList<String[]>();
 	String record;
@@ -104,6 +118,8 @@ public class CSVDrivenScript {
 	bw.newLine();
 	bw.write("****************");
 	bw.newLine();
+	
+	// clearing buffer stream and closing
 	bw.flush();
 	bw.close();
     }
@@ -129,7 +145,7 @@ public class CSVDrivenScript {
     // Instantiate Chrome Browser
     public void instantiateChrome() 
     {
-	System.setProperty("webdriver.chrome.driver", "src/lib/chromedriver.exe");
+	System.setProperty("webdriver.chrome.driver", "path/to/your/chromedriver.exe");
 	dc = DesiredCapabilities.chrome();
 
 	ChromeOptions options = new ChromeOptions();
@@ -146,10 +162,10 @@ public class CSVDrivenScript {
 	driver = new FirefoxDriver();
     }
     
-    // Instantiate IE Browser - using driver version 2.45
+    // Instantiate IE Browser
     public void instantiateIE() 
     {
-	System.setProperty("webdriver.ie.driver","src/lib/IEDriverServer_2.45.exe");
+	System.setProperty("webdriver.ie.driver","path/to/your/IEDriver.exe");
 	dc = DesiredCapabilities.internetExplorer();
 	driver = new InternetExplorerDriver();
     }
